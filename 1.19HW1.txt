@@ -1,0 +1,18 @@
+#include<iostream>
+#include<bitset>
+
+using std::cout;
+using std::cin;
+using std::endl;
+int main() {
+    u_int32_t num;  // unsigned int allocates 4 bytes
+    bool isPowerOfTwo;
+
+    cout << "Enter an unsigned integer number: ";
+    cin >> num;
+
+    cout << num << " = "<< std::bitset<32>(i) << endl;
+   
+
+    return 0;
+}

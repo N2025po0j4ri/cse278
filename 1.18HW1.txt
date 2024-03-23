@@ -1,0 +1,21 @@
+// Purpose: Determine if user inputted integer is even or odd using Bitwise operators and logic operators
+// Copyright by Nirupama Poojari, May 2023
+// Attempt 1: Removed endl.
+// Attempt 2: Boolean isOdd is not needed
+#include <iostream>
+int main() { //  Main starts here.
+
+   int num; //  Variables stores user input as integer;
+  // bool isOdd = false; //  Boolean determines if the user input is odd.
+   std::cout << "Enter an integer number:" << std::endl; //  Prompts user for integer.
+   std::cin >> num;
+   if ((num ^ 1) == (num + 1)) { // if starts here.
+    //  isOdd = false; //  Sets isOdd as false to show that number is even.
+      std::cout << num << " is an even number." << std::endl;
+   } else { // else starts here.
+    //  isOdd = true;  //  Sets isOdd as false to show that number is even.
+      std::cout << num << " is an odd number." << std::endl;
+  } // if-else ends.
+
+   return 0;
+} // Main ends here.
