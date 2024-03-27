@@ -1,0 +1,41 @@
+/*
+* This program impleets MySQL++ wrapper for the MySQL C APIs.
+* Finding how many airports are there in a timezone specified by the user
+* Author: N. Poojari 2023
+*/
+#define MYSQLPP_MYSQL_HEADERS_BURIED
+#include <mysql++/mysql++.h>
+#include <string>
+#include <iostream>
+int main(int argc, char* argv[]) {
+// Connect to database with: database, server, userID, password
+mysqlpp::Connection myDB;
+if (myDB.connect("cse278TA2022", "localhost", "cse278TA2022",
+"s3ltzerWater")){
+// Create a query
+mysqlpp::Query query = myDB.query();
+std::string srctimezone;
+std::cout << "Enter timezone to find the airports starting with this entry"
+<< std::endl;
+std::cin >> srctimezone;
+query << "SELECT COUNT(*) "
+<< "FROM Airports "
+<< "WHERE Timezone = " << srctimezone << ";";
+std::cout << query << std::endl;
+query.parse();
+mysqlpp::StoreQueryResult result = query.store();
+// Always check for errors
+if(result) {
+for (const auto & row : result) {
+    std::cout << row[0].c_str() << std::endl;
+} // done printing results
+}
+else {
+std::cerr << "Query failed: " << query.error() << std::endl;
+}
+} else {
+std::cerr << "Connection failed: " << myDB.error() << std::endl;
+return 1;
+}
+return 0;
+}
